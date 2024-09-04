@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  </head>
+  <body class="bg-[#a4c2eb] h-screen w-full flex justify-center font-sans">
+    <div class="w-full max-w-[1216px]">
+      <!-- Header -->
+      <div class="w-full h-[75px] flex justify-between items-center">
+        <!-- time -->
+        <div
+          class="w-[400px] h-[50px] rounded-[50px] text-[2.5rem] text-[#0E3366] font-bold"
+        >
+          Mon,09 Sept, 2024
+        </div>
+        <!-- search -->
+        <div class="w-[328px] h-[50px] bg-[#081f3d] rounded-[50px]">
+          <form class="max-w-md mx-auto">
+            <div class="relative">
+              <input
+                type="search"
+                id="default-search"
+                class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Search City"
+                required
+              />
+              <button
+                type="submit"
+                class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                <svg
+                  class="w-4 h-4 text-slate-100 dark:text-slate-100"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+        <!-- celcius to farenheit -->
+        <div class="w-[117px] h-[50px] bg-[#081f3d] rounded-[50px]"></div>
+        <!-- toggale-btn -->
+        <div class="w-[112px] h-[50px] rounded-[50px] flex justify-center">
+          <label class="inline-flex items-center cursor-pointer">
+            <input type="checkbox" value="" class="sr-only peer" />
+            <div
+              class="relative w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+            ></div>
+          </label>
+        </div>
+      </div>
+      <!-- Body One -->
+      <div class="w-full h-[300px] mt-5 flex justify-between items-center">
+        <!--forecast  -->
+        <div class="w-[800px] h-[300px] bg-[#081f3d] rounded-[50px]"></div>
+        <!--map  -->
+        <div
+          class="w-[384px] h-[300px] bg-[#081f3d] rounded-[50px] overflow-hidden"
+        >
+          <iframe
+            class="w-full h-full interactive_weather_map"
+            src="https://mapa.tutiempo.net/en/#13.68869;78.5083;5"
+            scrolling="no"
+            webkitallowfullscreen="true"
+            mozallowfullscreen="true"
+            allowfullscreen="true"
+            style="border: none"
+          ></iframe>
+        </div>
+      </div>
+      <!-- Body Two -->
+      <div class="w-full h-[300px] mt-5 flex justify-between items-center">
+        <!-- Forecast -->
+        <div class="w-[384px] h-[300px] bg-[#081f3d] rounded-[50px]"></div>
+        <!-- Chart  -->
+        <div
+          class="w-[800px] h-[300px] bg-[#081f3d] rounded-[50px] flex justify-center items-center"
+        >
+          <div
+            class="w-full h-full pt-5 pb-10 pl-5 bg-white rounded-[50px] shadow dark:bg-gray-800 md:pb-10 overflow-hidden"
+          >
+            <div class="flex justify-between">
+              <div>
+                <p
+                  class="text-4xl font-bold leading-none text-gray-900 dark:text-white"
+                >
+                  Overview
+                </p>
+              </div>
+            </div>
+            <div
+              id="line-chart"
+              class="w-[calc(100%-20px)] h-[calc(100%-60px)] mx-2 my-1"
+            ></div>
+          </div>
+        </div>
+        <!-- Chart  -->
+      </div>
+      <!-- Body Three -->
+      <div class="w-full h-[177px] mt-5 flex justify-between items-center">
+        <div class="w-[176px] h-[176px] bg-[#081f3d] rounded-[50px]"></div>
+        <div class="w-[176px] h-[176px] bg-[#081f3d] rounded-[50px]"></div>
+        <div class="w-[176px] h-[176px] bg-[#081f3d] rounded-[50px]"></div>
+        <div class="w-[176px] h-[176px] bg-[#081f3d] rounded-[50px]"></div>
+        <div class="w-[176px] h-[176px] bg-[#081f3d] rounded-[50px]"></div>
+        <div class="w-[176px] h-[176px] bg-[#081f3d] rounded-[50px]"></div>
+      </div>
+      <!-- Footer -->
+      <div
+        class="w-full h-[30px] bg-[#8db3e6] mt-5 flex justify-center items-center"
+      ></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

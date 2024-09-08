@@ -3,233 +3,187 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather App</title>
-    <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Weather</title>
   </head>
-  <body class="bg-[#a4c2eb] h-screen w-full flex justify-center font-sans">
-    <div class="w-full max-w-[1216px]">
-      <!-- Header -->
-      <div class="w-full h-[75px] flex justify-between items-center">
+  <body class="text-[#E1E1E1] bg-[#A4C2EB]">
+    <!-- Main Container -->
+    <div
+      class="mx-auto grid w-full md:max-w-[1024px] lg:max-w-[1276px] grid-cols-1 p-2 md:h-[1800px] lg:h-[1025px] md:p-3 lg:p-5"
+    >
+      <!-- header -->
+      <div
+        class="grid h-[250px] grid-cols-12 content-center gap-2 p-2 md:h-[200px] md:gap-3 lg:h-[75px] lg:gap-4"
+      >
         <!-- time -->
         <div
-          class="w-[400px] h-[50px] rounded-[50px] text-[2.5rem] text-[#0E3366] font-bold"
+          class="col-span-12 flex h-[50px] items-center justify-center text-[32px] font-bold text-[#0E3366] lg:col-span-4 lg:justify-start"
         >
-          Mon,09 Sept, 2024
+          Mon, 09 Sept, 2024
         </div>
-        <!-- search -->
-        <div class="w-[328px] h-[50px] bg-[#081f3d] rounded-[50px]">
-          <form class="max-w-md mx-auto">
-            <div class="relative">
-              <input
-                type="search"
-                id="default-search"
-                class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Search City"
-                required
-              />
-              <button
-                type="submit"
-                class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                <svg
-                  class="w-4 h-4 text-slate-100 dark:text-slate-100"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                  />
-                </svg>
-              </button>
-            </div>
-          </form>
-        </div>
-        <!-- celcius to farenheit -->
-        <div class="w-[117px] h-[50px] bg-[#081f3d] rounded-[50px]"></div>
-        <!-- toggale-btn -->
-        <div class="w-[112px] h-[50px] rounded-[50px] flex justify-center">
-          <label class="inline-flex items-center cursor-pointer">
-            <input type="checkbox" value="" class="sr-only peer" />
+
+        <!-- buttons wrapper to center both toggles -->
+        <div
+          class="col-span-12 flex h-[50px] items-center justify-self-center lg:col-span-4 lg:justify-center gap-5"
+        >
+          <!-- Celsius and Fahrenheit toggler -->
+          <div
+            class="flex h-[50px] w-[100px] items-center justify-evenly gap-2 rounded-full bg-[#8DB3E6]"
+          >
             <div
-              class="relative w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
-            ></div>
-          </label>
+              class="w-[100px] h-[50px] bg-[#081f3d] rounded-full relative flex items-center justify-center"
+            >
+              <input type="checkbox" id="temp-switch" class="hidden" />
+              <label
+                for="temp-switch"
+                class="w-[100px] h-[50px] bg-[#8DB3E6] rounded-full relative cursor-pointer transition-all duration-500 flex items-center"
+              >
+                <span
+                  class="flex justify-center items-center text-white font-bold text-lg w-[40px] h-[40px] rounded-full bg-[#0E3366] absolute top-[5px] left-[5px] transition-all duration-500"
+                  id="temp-toggle-ball"
+                  >°C</span
+                >
+              </label>
+            </div>
+          </div>
+          <!-- Dark mode toggle placeholder -->
+          <div
+            class="w-[100px] h-[50px] rounded-full relative flex items-center justify-center"
+          >
+            <div
+              class="w-[100px] h-[50px] rounded-full relative flex items-center justify-center"
+            >
+              <input type="checkbox" id="dark-mode-switch" class="hidden" />
+              <label
+                for="dark-mode-switch"
+                class="w-[100px] h-[50px] bg-[#8DB3E6] rounded-full relative cursor-pointer transition-all duration-500 flex items-center"
+              >
+                <span
+                  class="flex justify-center items-center text-white font-bold text-lg w-[40px] h-[40px] rounded-full bg-[#0E3366] absolute top-[5px] left-[5px] transition-all duration-500"
+                  id="dark-mode-toggle-ball"
+                ></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search bar -->
+        <div class="col-span-12 flex h-[50px] justify-center lg:col-span-4">
+          <input
+            type="text"
+            class="flex h-[50px] w-[300px] items-center justify-center rounded-full bg-[#0E3366] p-5 font-bold text-white"
+            placeholder="Search City"
+          />
         </div>
       </div>
-      <!-- Body One -->
-      <div class="w-[1216px] h-[300px] flex justify-between items-center">
-        <!-- forecast -->
+      <!-- section-1 -->
+      <div
+        class="grid grid-cols-12 content-center gap-2 md:gap-3 lg:gap-4 p-2 md:h-[750px] lg:h-[650px]"
+      >
+        <!-- current weather -->
         <div
-          class="w-[800px] h-[300px] bg-[#081f3d] rounded-[50px] flex flex-col justify-between p-6 pt-0"
+          class="col-span-12 flex h-[700px] flex-col items-center justify-center gap-4 rounded-[50px] bg-[#8DB3E6] md:h-[300px] lg:col-span-8"
         >
           <!-- weather -->
-          <div class="flex items-center justify-between text-white">
-            <!-- img & country -->
-            <div class="flex items-center">
-              <img
-                src="img/clouds.png"
-                class="w-[150px] h-[150px] mx-4"
-                alt="Weather icon"
-              />
-              <div class="mt-5 text-left">
-                <h1 class="text-5xl">Colombo</h1>
-                <p class="text-xl">Sri Lanka</p>
-              </div>
+          <div
+            class="flex h-[530px] flex-col items-center justify-evenly md:h-[100px] md:w-[740px] md:flex-row"
+          >
+            <div class="flex h-[100px] w-[100px] items-center justify-center">
+              <img src="img/clouds.png" />
             </div>
-            <!-- temp | humidity | wind speed -->
-            <div class="flex items-center">
-              <!-- temp -->
-              <div class="text-center mr-[15px]">
-                <h1 class="text-5xl">+20°</h1>
-                <p class="pt-2 text-xl">Temperature</p>
+            <div
+              class="flex h-[100px] w-[250px] flex-col items-center justify-center md:items-start"
+            >
+              <h1 class="text-5xl font-bold">Colombo</h1>
+              <p class="text-2xl font-semibold">Sri Lanka</p>
+            </div>
+            <!-- temp | humidity | wind -->
+            <div
+              class="flex h-[320px] w-[300px] flex-col items-center justify-center gap-4 md:h-[100px] md:w-[740px] md:flex-row md:gap-8 text-[#0E3366] font-semibold"
+            >
+              <div
+                class="flex h-[100px] w-[110px] flex-col items-center justify-center"
+              >
+                <h1 class="text-5xl">+20</h1>
+                <p class="text-lg">Temperature</p>
               </div>
-              <!-- humidity -->
-              <div class="text-center mr-[15px]">
-                <h1 class="text-5xl">24<span class="text-sm">%</span></h1>
-                <p class="pt-2 text-xl">Humidity</p>
+              <div
+                class="flex h-[100px] w-[110px] flex-col items-center justify-center"
+              >
+                <h1 class="text-5xl">+20</h1>
+                <p class="text-lg">Humidity</p>
               </div>
-              <!-- wind speed -->
-              <div class="text-center">
-                <h1 class="text-5xl">13<span class="text-sm">km/h</span></h1>
-                <p class="pt-2 text-xl">Wind Speed</p>
+              <div
+                class="flex h-[100px] w-[110px] flex-col items-center justify-center"
+              >
+                <h1 class="text-5xl">+20</h1>
+                <p class="text-lg">Wind Speed</p>
               </div>
             </div>
           </div>
-          <!-- time of the day -->
-          <div class="flex justify-center gap-5 text-white">
+
+          <!-- times  -->
+          <div
+            class="mt:h-[100px] mb-[10px] flex h-[130px] items-center justify-center gap-4"
+          >
+            <!-- times -->
             <div
-              class="w-[100px] h-[130px] bg-[#185cb8] rounded-[30px] flex flex-col items-center justify-around"
+              class="py- hidden h-[130px] w-[100px] flex-col items-center justify-center rounded-3xl bg-[#185CB8] md:flex"
             >
-              <p class="text-2xl font-bold">01 am</p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="white"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="h-[35px] w-[35px]"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
-                />
-              </svg>
-              <p class="text-2xl">20°</p>
+              <div class="font-bold">01 am</div>
+              <div>icon</div>
+              <div class="font-bold">20</div>
             </div>
+            <!-- times -->
             <div
-              class="w-[100px] h-[130px] bg-[#185cb8] rounded-[30px] flex flex-col items-center justify-around"
+              class="hidden h-[130px] w-[100px] flex-col items-center justify-center rounded-3xl bg-[#185CB8] py-4 md:flex"
             >
-              <p class="text-2xl font-bold">01 am</p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="white"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="h-[35px] w-[35px]"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
-                />
-              </svg>
-              <p class="text-2xl">20°</p>
+              <div class="font-bold">01 am</div>
+              <div>icon</div>
+              <div class="font-bold">20</div>
             </div>
+            <!-- times -->
             <div
-              class="w-[100px] h-[130px] bg-[#185cb8] rounded-[30px] flex flex-col items-center justify-around"
+              class="flex h-[130px] w-[100px] flex-col items-center justify-center rounded-3xl bg-[#185CB8] py-4"
             >
-              <p class="text-2xl font-bold">01 am</p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="white"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="h-[35px] w-[35px]"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
-                />
-              </svg>
-              <p class="text-2xl">20°</p>
+              <div class="font-bold">01 am</div>
+              <div>icon</div>
+              <div class="font-bold">20</div>
             </div>
+            <!-- times -->
             <div
-              class="w-[100px] h-[130px] bg-[#185cb8] rounded-[30px] flex flex-col items-center justify-around"
+              class="flex h-[130px] w-[100px] flex-col items-center justify-center rounded-3xl bg-[#185CB8] py-4"
             >
-              <p class="text-2xl font-bold">01 am</p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="white"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="h-[35px] w-[35px]"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
-                />
-              </svg>
-              <p class="text-2xl">20°</p>
+              <div class="font-bold">01 am</div>
+              <div>icon</div>
+              <div class="font-bold">20</div>
             </div>
+            <!-- times -->
             <div
-              class="w-[100px] h-[130px] bg-[#185cb8] rounded-[30px] flex flex-col items-center justify-around"
+              class="hidden h-[130px] w-[100px] flex-col items-center justify-center rounded-3xl bg-[#185CB8] py-4 md:flex"
             >
-              <p class="text-2xl font-bold">01 am</p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="white"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="h-[35px] w-[35px]"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
-                />
-              </svg>
-              <p class="text-2xl">20°</p>
+              <div class="font-bold">01 am</div>
+              <div>icon</div>
+              <div class="font-bold">20</div>
             </div>
+            <!-- times -->
             <div
-              class="w-[100px] h-[130px] bg-[#185cb8] rounded-[30px] flex flex-col items-center justify-around"
+              class="hidden h-[130px] w-[100px] flex-col items-center justify-center rounded-3xl bg-[#185CB8] py-4 md:flex"
             >
-              <p class="text-2xl font-bold">01 am</p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="white"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="h-[35px] w-[35px]"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
-                />
-              </svg>
-              <p class="text-2xl">20°</p>
+              <div class="font-bold">01 am</div>
+              <div>icon</div>
+              <div class="font-bold">20</div>
             </div>
           </div>
         </div>
         <!-- map -->
         <div
-          class="w-[384px] h-[300px] bg-[#081f3d] rounded-[50px] overflow-hidden"
+          class="rounded-[50px] col-span-12 h-[300px] bg-slate-500 md:h-[300px] md:col-span-6 lg:col-span-4 overflow-hidden"
         >
           <iframe
             class="w-full h-full interactive_weather_map"
@@ -241,18 +195,53 @@
             style="border: none"
           ></iframe>
         </div>
-      </div>
-      <!-- Body Two -->
-      <div class="w-full h-[300px] mt-5 flex justify-between items-center">
-        <!-- Forecast -->
-        <div class="w-[384px] h-[300px] bg-[#081f3d] rounded-[50px]"></div>
-        <!-- Chart  -->
+        <!-- forecast -->
         <div
-          class="w-[800px] h-[300px] bg-[#081f3d] rounded-[50px] flex justify-center items-center"
+          class="col-span-12 flex h-[300px] flex-col items-center justify-center gap-4 rounded-[50px] bg-[#8DB3E6] md:col-span-6 md:h-[300px] lg:col-span-4"
         >
-          <div
-            class="w-full h-full pt-5 pb-10 pl-5 bg-white rounded-[50px] shadow dark:bg-gray-800 md:pb-10 overflow-hidden"
-          >
+          <div class="text-4xl font-bold text-[#0E3366]">Forecast</div>
+          <div class="flex flex-col gap-5 text-white">
+            <div
+              class="flex h-[50px] w-[300px] items-center justify-center gap-3 rounded-full bg-[#0E3366]"
+            >
+              <div class="h-[24px] w-[24px]">icon</div>
+              <div class="text-3xl">
+                +22°<span class="text-base">/+17°</span>
+              </div>
+              <div class="text-3xl">
+                16 <span class="text-base">Sept,Mon</span>
+              </div>
+            </div>
+            <div
+              class="flex h-[50px] w-[300px] items-center justify-center gap-3 rounded-full bg-[#0E3366]"
+            >
+              <div class="h-[24px] w-[24px]">icon</div>
+              <div class="text-3xl">
+                +22°<span class="text-base">/+17°</span>
+              </div>
+              <div class="text-3xl">
+                16 <span class="text-base">Sept,Mon</span>
+              </div>
+            </div>
+            <div
+              class="flex h-[50px] w-[300px] items-center justify-center gap-3 rounded-full bg-[#0E3366]"
+            >
+              <div class="h-[24px] w-[24px]">icon</div>
+              <div class="text-3xl">
+                +22°<span class="text-base">/+17°</span>
+              </div>
+              <div class="text-3xl">
+                16 <span class="text-base">Sept,Mon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- overview (chart) -->
+        <div
+          class="col-span-12 flex h-auto flex-col items-center justify-center p-5 m-5 rounded-[50px] bg-[#374151] md:h-[300px] lg:col-span-8 overflow-hidden"
+        >
+          <!-- chart -->
+          <div class="bg-gray-700 h-[300px] w-full col-span-12">
             <div class="flex justify-between">
               <div>
                 <p
@@ -264,62 +253,67 @@
             </div>
             <div
               id="line-chart"
-              class="w-[calc(100%-20px)] h-[calc(100%-60px)] mx-2 my-1"
+              class="w-[calc(100%-20px)] h-[calc(100%-60px)] mx-5 my-1"
             ></div>
           </div>
-        </div>
-        <!-- Chart  -->
-      </div>
-      <!-- Body Three -->
-      <div class="w-full h-[177px] mt-5 flex justify-between items-center">
-        <div
-          class="w-[176px] h-[176px] bg-[#081f3d] rounded-[50px] text-white flex items-center justify-center flex-col text-center"
-        >
-          <h1 class="text-4xl font-bold">Lisbon</h1>
-          <p class="text-lg">Portugal</p>
-          <p class="pt-6 text-xl">20 °<span class="text-sm">/28°</span></p>
-        </div>
-        <div
-          class="w-[176px] h-[176px] bg-[#081f3d] rounded-[50px] text-white flex items-center justify-center flex-col text-center"
-        >
-          <h1 class="text-4xl font-bold">Lisbon</h1>
-          <p class="text-lg">Portugal</p>
-          <p class="pt-6 text-xl">20 °<span class="text-sm">/28°</span></p>
-        </div>
-        <div
-          class="w-[176px] h-[176px] bg-[#081f3d] rounded-[50px] text-white flex items-center justify-center flex-col text-center"
-        >
-          <h1 class="text-4xl font-bold">Lisbon</h1>
-          <p class="text-lg">Portugal</p>
-          <p class="pt-6 text-xl">20 °<span class="text-sm">/28°</span></p>
-        </div>
-        <div
-          class="w-[176px] h-[176px] bg-[#081f3d] rounded-[50px] text-white flex items-center justify-center flex-col text-center"
-        >
-          <h1 class="text-4xl font-bold">Lisbon</h1>
-          <p class="text-lg">Portugal</p>
-          <p class="pt-6 text-xl">20 °<span class="text-sm">/28°</span></p>
-        </div>
-        <div
-          class="w-[176px] h-[176px] bg-[#081f3d] rounded-[50px] text-white flex items-center justify-center flex-col text-center"
-        >
-          <h1 class="text-4xl font-bold">Lisbon</h1>
-          <p class="text-lg">Portugal</p>
-          <p class="pt-6 text-xl">20 °<span class="text-sm">/28°</span></p>
-        </div>
-        <div
-          class="w-[176px] h-[176px] bg-[#081f3d] rounded-[50px] text-white flex items-center justify-center flex-col text-center"
-        >
-          <h1 class="text-4xl font-bold">Lisbon</h1>
-          <p class="text-lg">Portugal</p>
-          <p class="pt-6 text-xl">20 °<span class="text-sm">/28°</span></p>
+          <!-- chart -->
         </div>
       </div>
-      <!-- Footer -->
+      <!-- countries -->
       <div
-        class="w-full h-[30px] bg-[#8db3e6] mt-5 flex justify-center items-center"
-      ></div>
+        class="grid grid-cols-12 content-center gap-2 md:gap-3 lg:gap-4 p-2 md:h-[500px] lg:h-[100px] text-[#0E3366] font-semibold"
+      >
+        <div
+          class="rounded-[50px] col-span-12 h-[186px] w-[186px] bg-[#8DB3E6] md:col-span-4 lg:col-span-2 mx-auto flex flex-col items-center justify-center"
+        >
+          <h1 class="text-4xl font-semibold">Lisbon</h1>
+          <p class="text-lg">Portugal</p>
+          <p class="pt-6 text-xl">20 °<span class="text-sm">/28°</span></p>
+        </div>
+        <div
+          class="rounded-[50px] col-span-12 h-[186px] w-[186px] bg-[#8DB3E6] md:col-span-4 lg:col-span-2 mx-auto flex flex-col items-center justify-center"
+        >
+          <h1 class="text-4xl font-semibold">New York</h1>
+          <p class="text-lg">USA</p>
+          <p class="pt-6 text-xl">18 °<span class="text-sm">/25°</span></p>
+        </div>
+        <div
+          class="rounded-[50px] col-span-12 h-[186px] w-[186px] bg-[#8DB3E6] md:col-span-4 lg:col-span-2 mx-auto flex flex-col items-center justify-center"
+        >
+          <h1 class="text-4xl font-semibold">Tokyo</h1>
+          <p class="text-lg">Japan</p>
+          <p class="pt-6 text-xl">22 °<span class="text-sm">/30°</span></p>
+        </div>
+        <div
+          class="rounded-[50px] col-span-12 h-[186px] w-[186px] bg-[#8DB3E6] md:col-span-4 lg:col-span-2 mx-auto flex flex-col items-center justify-center"
+        >
+          <h1 class="text-4xl font-semibold">Sydney</h1>
+          <p class="text-lg">Australia</p>
+          <p class="pt-6 text-xl">25 °<span class="text-sm">/32°</span></p>
+        </div>
+        <div
+          class="rounded-[50px] col-span-12 h-[186px] w-[186px] bg-[#8DB3E6] md:col-span-4 lg:col-span-2 mx-auto flex flex-col items-center justify-center"
+        >
+          <h1 class="text-4xl font-semibold">Janeiro</h1>
+          <p class="text-lg">Brazil</p>
+          <p class="pt-6 text-xl">28 °<span class="text-sm">/35°</span></p>
+        </div>
+        <div
+          class="rounded-[50px] col-span-12 h-[186px] w-[186px] bg-[#8DB3E6] md:col-span-4 lg:col-span-2 mx-auto flex flex-col items-center justify-center"
+        >
+          <h1 class="text-4xl font-semibold">Paris</h1>
+          <p class="text-lg">France</p>
+          <p class="pt-6 text-xl">16 °<span class="text-sm">/22°</span></p>
+        </div>
+      </div>
     </div>
-    <script src="script.js"></script>
+
+    <!-- Footer -->
+    <footer
+      class="mt-2 flex h-[50px] w-full items-center justify-center bg-[#8DB3E6] text-[#0E3366] font-bold"
+    >
+      Weather App © 2024 iCET, Deelaka Ransilu
+    </footer>
+    <script src="app.js"></script>
   </body>
 </html>

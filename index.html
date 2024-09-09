@@ -75,6 +75,7 @@
         <!-- Search bar -->
         <div class="col-span-12 flex h-[50px] justify-center lg:col-span-4">
           <input
+            id="city-input"
             type="text"
             class="flex h-[50px] w-[300px] items-center justify-center rounded-full bg-[#0E3366] p-5 font-bold text-white"
             placeholder="Search City"
@@ -259,7 +260,7 @@
           <!-- chart -->
         </div>
       </div>
-      <!-- countries -->
+      <!-- cities -->
       <div
         class="grid grid-cols-12 content-center gap-2 md:gap-3 lg:gap-4 p-2 md:h-[500px] lg:h-[100px] text-[#0E3366] font-semibold"
       >
@@ -268,42 +269,42 @@
         >
           <h1 class="text-4xl font-semibold">Lisbon</h1>
           <p class="text-lg">Portugal</p>
-          <p class="pt-6 text-xl">20 °<span class="text-sm">/28°</span></p>
+          <p class="pt-6 text-2xl" id="lisbon">Loading...</p>
         </div>
         <div
           class="rounded-[50px] col-span-12 h-[186px] w-[186px] bg-[#8DB3E6] md:col-span-4 lg:col-span-2 mx-auto flex flex-col items-center justify-center"
         >
           <h1 class="text-4xl font-semibold">New York</h1>
           <p class="text-lg">USA</p>
-          <p class="pt-6 text-xl">18 °<span class="text-sm">/25°</span></p>
+          <p class="pt-6 text-2xl" id="newyork">Loading...</p>
         </div>
         <div
           class="rounded-[50px] col-span-12 h-[186px] w-[186px] bg-[#8DB3E6] md:col-span-4 lg:col-span-2 mx-auto flex flex-col items-center justify-center"
         >
           <h1 class="text-4xl font-semibold">Tokyo</h1>
           <p class="text-lg">Japan</p>
-          <p class="pt-6 text-xl">22 °<span class="text-sm">/30°</span></p>
+          <p class="pt-6 text-2xl" id="tokyo">Loading...</p>
         </div>
         <div
           class="rounded-[50px] col-span-12 h-[186px] w-[186px] bg-[#8DB3E6] md:col-span-4 lg:col-span-2 mx-auto flex flex-col items-center justify-center"
         >
           <h1 class="text-4xl font-semibold">Sydney</h1>
           <p class="text-lg">Australia</p>
-          <p class="pt-6 text-xl">25 °<span class="text-sm">/32°</span></p>
+          <p class="pt-6 text-2xl" id="sydney">Loading...</p>
         </div>
         <div
           class="rounded-[50px] col-span-12 h-[186px] w-[186px] bg-[#8DB3E6] md:col-span-4 lg:col-span-2 mx-auto flex flex-col items-center justify-center"
         >
           <h1 class="text-4xl font-semibold">Janeiro</h1>
           <p class="text-lg">Brazil</p>
-          <p class="pt-6 text-xl">28 °<span class="text-sm">/35°</span></p>
+          <p class="pt-6 text-2xl" id="janeiro">Loading...</p>
         </div>
         <div
           class="rounded-[50px] col-span-12 h-[186px] w-[186px] bg-[#8DB3E6] md:col-span-4 lg:col-span-2 mx-auto flex flex-col items-center justify-center"
         >
           <h1 class="text-4xl font-semibold">Paris</h1>
           <p class="text-lg">France</p>
-          <p class="pt-6 text-xl">16 °<span class="text-sm">/22°</span></p>
+          <p class="pt-6 text-2xl" id="paris">Loading...</p>
         </div>
       </div>
     </div>
@@ -314,6 +315,8 @@
     >
       Weather App © 2024 iCET, Deelaka Ransilu
     </footer>
-    <script src="app.js"></script>
+    <script src="chart.js"></script>
+    <script src="cities.js"></script>
+    <script src="toggle-btns.js"></script>
   </body>
 </html>

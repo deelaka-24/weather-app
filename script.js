@@ -35,4 +35,5 @@ async function search() {
     data.forecast.forecastday.map((day) => day.day.avgtemp_c)
   );
   updateCurrentWeather(data);
+  updateForecast(data);
 }

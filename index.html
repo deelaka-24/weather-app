@@ -149,7 +149,7 @@
             </div>
           </div>
 
-          <!-- times -->
+          <!-- times  -->
           <div
             class="mt:h-[100px] mb-[10px] flex h-[130px] items-center justify-center gap-4"
           >
@@ -157,55 +157,37 @@
             <div
               class="flex h-[130px] w-[100px] flex-col items-center justify-center rounded-3xl bg-[#185CB8] py-4"
             >
-              <div
-                id="time-01"
-                class="flex flex-col items-center justify-center w-full"
-              ></div>
+              <div id="time-01" class="icon-img w-[52px] h-[52px]"></div>
             </div>
             <!-- times-02 -->
             <div
               class="flex h-[130px] w-[100px] flex-col items-center justify-center rounded-3xl bg-[#185CB8] py-4"
             >
-              <div
-                id="time-02"
-                class="flex flex-col items-center justify-center w-full"
-              ></div>
+              <div id="time-02" class="icon-img w-[52px] h-[52px]"></div>
             </div>
             <!-- times-03 -->
             <div
               class="py- hidden h-[130px] w-[100px] flex-col items-center justify-center rounded-3xl bg-[#185CB8] md:flex"
             >
-              <div
-                id="time-03"
-                class="flex flex-col items-center justify-center w-full"
-              ></div>
+              <div id="time-03" class="icon-img w-[52px] h-[52px]"></div>
             </div>
             <!-- times-04 -->
             <div
               class="hidden h-[130px] w-[100px] flex-col items-center justify-center rounded-3xl bg-[#185CB8] py-4 md:flex"
             >
-              <div
-                id="time-04"
-                class="flex flex-col items-center justify-center w-full"
-              ></div>
+              <div id="time-04" class="icon-img w-[52px] h-[52px]"></div>
             </div>
             <!-- times-05 -->
             <div
               class="hidden h-[130px] w-[100px] flex-col items-center justify-center rounded-3xl bg-[#185CB8] py-4 md:flex"
             >
-              <div
-                id="time-05"
-                class="flex flex-col items-center justify-center w-full"
-              ></div>
+              <div id="time-05" class="icon-img w-[52px] h-[52px]"></div>
             </div>
             <!-- times-06 -->
             <div
               class="hidden h-[130px] w-[100px] flex-col items-center justify-center rounded-3xl bg-[#185CB8] py-4 md:flex"
             >
-              <div
-                id="time-06"
-                class="flex flex-col items-center justify-center w-full"
-              ></div>
+              <div id="time-06" class="icon-img w-[52px] h-[52px]"></div>
             </div>
           </div>
         </div>
@@ -230,34 +212,35 @@
           <div class="text-4xl font-bold text-[#0E3366]">Forecast</div>
           <div class="flex flex-col gap-5 text-white">
             <div
-              class="flex h-[50px] w-[300px] items-center justify-evenly gap-3 rounded-full bg-[#0E3366]"
+              class="forecast-item flex h-[50px] w-[300px] items-center justify-evenly gap-3 rounded-full bg-[#0E3366]"
             >
-              <div class="h-[24px] w-[24px]">icon</div>
-              <div class="text-3xl">+22°</div>
-              <div class="text-3xl">
+              <div class="icon h-[40px] w-[40px]">icon</div>
+              <div class="text-3xl temp">+22°</div>
+              <div class="text-3xl date">
                 16 <span class="text-base">Sept,Mon</span>
               </div>
             </div>
             <div
-              class="flex h-[50px] w-[300px] items-center justify-evenly gap-3 rounded-full bg-[#0E3366]"
+              class="forecast-item flex h-[50px] w-[300px] items-center justify-evenly gap-3 rounded-full bg-[#0E3366]"
             >
-              <div class="h-[24px] w-[24px]">icon</div>
-              <div class="text-3xl">+22°</div>
-              <div class="text-3xl">
+              <div class="icon h-[40px] w-[40px]">icon</div>
+              <div class="text-3xl temp">+22°</div>
+              <div class="text-3xl date">
                 16 <span class="text-base">Sept,Mon</span>
               </div>
             </div>
             <div
-              class="flex h-[50px] w-[300px] items-center justify-evenly gap-3 rounded-full bg-[#0E3366]"
+              class="forecast-item flex h-[50px] w-[300px] items-center justify-evenly gap-3 rounded-full bg-[#0E3366]"
             >
-              <div class="h-[24px] w-[24px]">icon</div>
-              <div class="text-3xl">+22°</div>
-              <div class="text-3xl">
+              <div class="icon h-[40px] w-[40px]">icon</div>
+              <div class="text-3xl temp">+22°</div>
+              <div class="text-3xl date">
                 16 <span class="text-base">Sept,Mon</span>
               </div>
             </div>
           </div>
         </div>
+
         <!-- overview (chart) -->
         <div
           class="col-span-12 flex h-auto flex-col items-center justify-center p-5 m-5 rounded-[50px] bg-[#374151] md:h-[300px] lg:col-span-8 overflow-hidden"
@@ -341,5 +324,6 @@
     <script src="cities.js"></script>
     <script src="toggle-btns.js"></script>
     <script src="updateCurrentWeather.js"></script>
+    <script src="updateForecast.js"></script>
   </body>
 </html>

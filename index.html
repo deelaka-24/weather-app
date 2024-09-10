@@ -22,7 +22,8 @@
       >
         <!-- time -->
         <div
-          class="col-span-12 flex h-[50px] items-center justify-center text-[32px] font-bold text-[#0E3366] lg:col-span-4 lg:justify-start"
+          id="current-date"
+          class="col-span-12 flex h-[50px] items-center justify-center text-[43px] font-bold text-[#0E3366] lg:col-span-4 lg:justify-start"
         >
           Mon, 09 Sept, 2024
         </div>
@@ -77,9 +78,29 @@
           <input
             id="city-input"
             type="text"
-            class="flex h-[50px] w-[300px] items-center justify-center rounded-full bg-[#0E3366] p-5 font-bold text-white"
+            class="flex h-[50px] w-[250px] items-center justify-center rounded-full bg-[#0E3366] p-5 font-bold text-white"
             placeholder="Search City"
           />
+          <button
+            onclick="search()"
+            class="ml-2 h-[50px] w-[50px] flex items-center justify-center rounded-full bg-[#0E3366]"
+          >
+            <svg
+              class="w-[25px] h-[25px] text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 20 20"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+              />
+            </svg>
+          </button>
         </div>
       </div>
       <!-- section-1 -->
@@ -94,14 +115,14 @@
           <div
             class="flex h-[530px] flex-col items-center justify-evenly md:h-[100px] md:w-[740px] md:flex-row"
           >
-            <div class="flex h-[100px] w-[100px] items-center justify-center">
-              <img src="img/clouds.png" />
+            <div class="flex h-[150px] w-[100px] items-center justify-center">
+              <img id="img" src="img/clouds.png" />
             </div>
             <div
-              class="flex h-[100px] w-[250px] flex-col items-center justify-center md:items-start"
+              class="flex h-[100px] w-[250px] flex-col pl-2 items-center justify-center md:items-start text-[#E1E1E1]"
             >
-              <h1 class="text-5xl font-bold">Colombo</h1>
-              <p class="text-2xl font-semibold">Sri Lanka</p>
+              <h1 class="text-5xl font-bold" id="city">Colombo</h1>
+              <p class="text-2xl font-semibold" id="country">Sri Lanka</p>
             </div>
             <!-- temp | humidity | wind -->
             <div
@@ -110,75 +131,81 @@
               <div
                 class="flex h-[100px] w-[110px] flex-col items-center justify-center"
               >
-                <h1 class="text-5xl">+20</h1>
+                <h1 class="text-5xl font-semibold" id="temp">20°</h1>
                 <p class="text-lg">Temperature</p>
               </div>
               <div
                 class="flex h-[100px] w-[110px] flex-col items-center justify-center"
               >
-                <h1 class="text-5xl">+20</h1>
+                <h1 class="text-5xl font-semibold" id="humidity">20</h1>
                 <p class="text-lg">Humidity</p>
               </div>
               <div
                 class="flex h-[100px] w-[110px] flex-col items-center justify-center"
               >
-                <h1 class="text-5xl">+20</h1>
+                <h1 class="text-5xl font-semibold" id="windSpeed">20</h1>
                 <p class="text-lg">Wind Speed</p>
               </div>
             </div>
           </div>
 
-          <!-- times  -->
+          <!-- times -->
           <div
             class="mt:h-[100px] mb-[10px] flex h-[130px] items-center justify-center gap-4"
           >
-            <!-- times -->
+            <!-- times-01 -->
+            <div
+              class="flex h-[130px] w-[100px] flex-col items-center justify-center rounded-3xl bg-[#185CB8] py-4"
+            >
+              <div
+                id="time-01"
+                class="flex flex-col items-center justify-center w-full"
+              ></div>
+            </div>
+            <!-- times-02 -->
+            <div
+              class="flex h-[130px] w-[100px] flex-col items-center justify-center rounded-3xl bg-[#185CB8] py-4"
+            >
+              <div
+                id="time-02"
+                class="flex flex-col items-center justify-center w-full"
+              ></div>
+            </div>
+            <!-- times-03 -->
             <div
               class="py- hidden h-[130px] w-[100px] flex-col items-center justify-center rounded-3xl bg-[#185CB8] md:flex"
             >
-              <div class="font-bold">01 am</div>
-              <div>icon</div>
-              <div class="font-bold">20</div>
+              <div
+                id="time-03"
+                class="flex flex-col items-center justify-center w-full"
+              ></div>
             </div>
-            <!-- times -->
+            <!-- times-04 -->
             <div
               class="hidden h-[130px] w-[100px] flex-col items-center justify-center rounded-3xl bg-[#185CB8] py-4 md:flex"
             >
-              <div class="font-bold">01 am</div>
-              <div>icon</div>
-              <div class="font-bold">20</div>
+              <div
+                id="time-04"
+                class="flex flex-col items-center justify-center w-full"
+              ></div>
             </div>
-            <!-- times -->
-            <div
-              class="flex h-[130px] w-[100px] flex-col items-center justify-center rounded-3xl bg-[#185CB8] py-4"
-            >
-              <div class="font-bold">01 am</div>
-              <div>icon</div>
-              <div class="font-bold">20</div>
-            </div>
-            <!-- times -->
-            <div
-              class="flex h-[130px] w-[100px] flex-col items-center justify-center rounded-3xl bg-[#185CB8] py-4"
-            >
-              <div class="font-bold">01 am</div>
-              <div>icon</div>
-              <div class="font-bold">20</div>
-            </div>
-            <!-- times -->
+            <!-- times-05 -->
             <div
               class="hidden h-[130px] w-[100px] flex-col items-center justify-center rounded-3xl bg-[#185CB8] py-4 md:flex"
             >
-              <div class="font-bold">01 am</div>
-              <div>icon</div>
-              <div class="font-bold">20</div>
+              <div
+                id="time-05"
+                class="flex flex-col items-center justify-center w-full"
+              ></div>
             </div>
-            <!-- times -->
+            <!-- times-06 -->
             <div
               class="hidden h-[130px] w-[100px] flex-col items-center justify-center rounded-3xl bg-[#185CB8] py-4 md:flex"
             >
-              <div class="font-bold">01 am</div>
-              <div>icon</div>
-              <div class="font-bold">20</div>
+              <div
+                id="time-06"
+                class="flex flex-col items-center justify-center w-full"
+              ></div>
             </div>
           </div>
         </div>
@@ -203,34 +230,28 @@
           <div class="text-4xl font-bold text-[#0E3366]">Forecast</div>
           <div class="flex flex-col gap-5 text-white">
             <div
-              class="flex h-[50px] w-[300px] items-center justify-center gap-3 rounded-full bg-[#0E3366]"
+              class="flex h-[50px] w-[300px] items-center justify-evenly gap-3 rounded-full bg-[#0E3366]"
             >
               <div class="h-[24px] w-[24px]">icon</div>
-              <div class="text-3xl">
-                +22°<span class="text-base">/+17°</span>
-              </div>
+              <div class="text-3xl">+22°</div>
               <div class="text-3xl">
                 16 <span class="text-base">Sept,Mon</span>
               </div>
             </div>
             <div
-              class="flex h-[50px] w-[300px] items-center justify-center gap-3 rounded-full bg-[#0E3366]"
+              class="flex h-[50px] w-[300px] items-center justify-evenly gap-3 rounded-full bg-[#0E3366]"
             >
               <div class="h-[24px] w-[24px]">icon</div>
-              <div class="text-3xl">
-                +22°<span class="text-base">/+17°</span>
-              </div>
+              <div class="text-3xl">+22°</div>
               <div class="text-3xl">
                 16 <span class="text-base">Sept,Mon</span>
               </div>
             </div>
             <div
-              class="flex h-[50px] w-[300px] items-center justify-center gap-3 rounded-full bg-[#0E3366]"
+              class="flex h-[50px] w-[300px] items-center justify-evenly gap-3 rounded-full bg-[#0E3366]"
             >
               <div class="h-[24px] w-[24px]">icon</div>
-              <div class="text-3xl">
-                +22°<span class="text-base">/+17°</span>
-              </div>
+              <div class="text-3xl">+22°</div>
               <div class="text-3xl">
                 16 <span class="text-base">Sept,Mon</span>
               </div>
@@ -315,8 +336,10 @@
     >
       Weather App © 2024 iCET, Deelaka Ransilu
     </footer>
+    <script src="script.js"></script>
     <script src="chart.js"></script>
     <script src="cities.js"></script>
     <script src="toggle-btns.js"></script>
+    <script src="updateCurrentWeather.js"></script>
   </body>
 </html>

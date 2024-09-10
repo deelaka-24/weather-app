@@ -1,37 +1,39 @@
-// Temperature Toggle
 let tempToggler = document.getElementById("temp-switch");
 let tempBall = document.getElementById("temp-toggle-ball");
 
 tempToggler.addEventListener("change", () => {
   if (tempToggler.checked) {
-    tempBall.textContent = "°F"; // Update text to Fahrenheit
+    tempBall.textContent = "°F";
   } else {
-    tempBall.textContent = "°C"; // Update text to Celsius
+    tempBall.textContent = "°C"; 
   }
 });
 
-// Dark Mode Toggle
-let darkModeToggler = document.getElementById("dark-mode-switch");
-let darkModeBall = document.getElementById("dark-mode-toggle-ball");
+
+const darkModeToggler = document.getElementById("dark-mode-switch");
+const darkModeBall = document.getElementById("dark-mode-toggle-ball");
+
 
 darkModeToggler.addEventListener("change", () => {
-  if (darkModeToggler.checked) {
-    document.body.classList.remove("bg-[#A4C2EB]");
-    document.body.classList.add("bg-[#081F3D]");
-    darkModeBall.classList.remove("left-[5px]", "bg-[#0E3366]");
-    darkModeBall.classList.add(
-      "left-[calc(100%-5px)]",
-      "translate-x-[-100%]",
-      "bg-[#0E3366]"
-    );
-  } else {
-    document.body.classList.remove("bg-[#081F3D]");
-    document.body.classList.add("bg-[#A4C2EB]");
-    darkModeBall.classList.remove(
-      "left-[calc(100%-5px)]",
-      "translate-x-[-100%]",
-      "bg-[#0E3366]"
-    );
-    darkModeBall.classList.add("left-[5px]", "bg-[#0E3366]");
-  }
+  const isDarkMode = darkModeToggler.checked;
+
+  document.documentElement.classList.toggle("dark", isDarkMode);
+
+  document.body.classList.toggle("bg-[#081F3D]", isDarkMode);
+  document.body.classList.toggle("bg-[#A4C2EB]", !isDarkMode);
+
+  darkModeBall.classList.toggle("left-[5px]", !isDarkMode);
+  darkModeBall.classList.toggle("left-[calc(100%-45px)]", isDarkMode);
 });
+
+const prefersDarkScheme = window.matchMedia(
+  "(prefers-color-scheme: dark)"
+).matches;
+if (prefersDarkScheme) {
+  darkModeToggler.checked = true;
+  document.documentElement.classList.add("dark");
+  darkModeBall.classList.add("left-[calc(100%-45px)]");
+} else {
+  darkModeToggler.checked = false;
+  darkModeBall.classList.add("left-[5px]");
+}
